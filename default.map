@@ -1,0 +1,110 @@
+---
+aif2_pid:
+  Name: aif2_pid
+  Offset: 0x0
+  Description:
+  Bits: 
+    8-10: |
+      Major revision X code // 
+          Should be 1
+    6-7: Custom version code
+    0-5: Minor revision Y code
+
+aif2_scratch:
+  Name: aif2_scratch
+  Offset: 0x4
+  Description:
+  Bits:
+    0-31: scratch
+
+SD_RX_EN_CFG[0]:
+  Name: RX Enable Register (Link 0)
+  Offset: 0x8000
+  Bits:
+    0: ENRX // 0 = Disabled, 1 = Enabled
+
+SD_RX_R2_CFG[0]:
+  Name: RX Configuration Register 2 (Link 0)
+  Offset: 0x8008
+  Bits:
+    15-16: RXLOOPBACK // 00 = Disabled, 11 = Enabled
+
+SD_TX_EN_CFG[0]:
+  Name: TX Enable Register (Link 0)
+  Offset: 0x8010
+  Bits:
+    0: ENTX // 0 = Disabled, 1 = Enabled
+
+SD_TX_R1_CFG[0]:
+  Name: TX Configuration Register 1 (Link 0)
+  Offset: 0x8014
+  Bits:
+    15-16: TXLOOPBACK // 00 = Disabled, 11 = Enabled
+
+SD_RX_EN_CFG[1]:
+  Name: RX Enable Register (Link 1)
+  Offset: 0x8800
+  Bits:
+    0: ENRX // 0 = Disabled, 1 = Enabled
+
+SD_TX_EN_CFG[1]:
+  Name: TX Enable Register (Link 1)
+  Offset: 0x8810
+  Bits:
+    0: ENTX // 0 = Disabled, 1 = Enabled
+
+SD_RX_EN_CFG[2]:
+  Name: RX Enable Register (Link 2)
+  Offset: 0x9000
+  Bits:
+    0: ENRX // 0 = Disabled, 1 = Enabled
+
+SD_TX_EN_CFG[2]:
+  Name: TX Enable Register (Link 2)
+  Offset: 0x9010
+  Bits:
+    0: ENTX // 0 = Disabled, 1 = Enabled
+
+SD_RX_EN_CFG[3]:
+  Name: RX Enable Register (Link 3)
+  Offset: 0x9800
+  Bits:
+    0: ENRX // 0 = Disabled, 1 = Enabled
+
+SD_TX_EN_CFG[3]:
+  Name: TX Enable Register (Link 3)
+  Offset: 0x9810
+  Bits:
+    0: ENTX // 0 = Disabled, 1 = Enabled
+
+SD_RX_EN_CFG[4]:
+  Name: RX Enable Register (Link 4)
+  Offset: 0xA000
+  Bits:
+    0: ENRX // 0 = Disabled, 1 = Enabled
+
+SD_TX_EN_CFG[4]:
+  Name: TX Enable Register (Link 4)
+  Offset: 0xA010
+  Bits:
+    0: ENTX // 0 = Disabled, 1 = Enabled
+
+SD_RX_EN_CFG[5]:
+  Name: RX Enable Register (Link 5)
+  Offset: 0xA800
+  Bits:
+    0: ENRX // 0 = Disabled, 1 = Enabled
+
+SD_TX_EN_CFG[5]:
+  Name: TX Enable Register (Link 5)
+  Offset: 0xA810
+  Bits:
+    0: ENTX // 0 = Disabled, 1 = Enabled
+
+RM_LK_CFG0[0]:
+  Name: RM Link Configuration Register 0 (Link 0)
+  Offset: 0x50000
+  Bits:
+    2-3: Link Rate // 0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
+    1: Enable RM Link // 0 = Disabled, 1 = Enabled
+    0: Short frame mode // 0 = CPRI, 1 = OBSAI
