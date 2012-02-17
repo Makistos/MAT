@@ -1,16 +1,13 @@
 '''
 Created on 15 Feb 2012
 
-@author: poutima
+@author: mep
 '''
 
 import yaml
 import sys
 import getopt
-import string
 
-RegTemplate = string.Template('''${bits}\t\t${reg_name}\t\t:\t${bit_value}\t${hex_value}\t${dec_value}\t${ascii_value}''')
- 
 def __usage():
     print '''Usage:
     -h, --help\tThis help text.
@@ -60,23 +57,27 @@ def __printReg(regName, regDef, memory):
     ''' Prints the register info. '''
     bits = regDef['Bits']
     
-    print "%s: %s (%s)" % (regName, regDef['Name'], memory)
+    print "%s: %s (%s)" % (regName.ljust(30), regDef['Name'].ljust(50), memory)
 
     for key, bit in sorted(bits.iteritems()):
         achar = ''
+        # Get bit range
         bit_range = str(key).split('-', 2)
+        # Generate bit pattern
         bit_val = __bitRange(memory, bit_range)
         desc = bit.split('//')
-        if len(bit_val) == 4:
-            # If length of field is exactly 2 bytes, print the ascii value as well
+        
+        if len(bit_val) == 8:
+            # If length of field is exactly 1 byte, print the ascii value as well
             achar = chr(int(bit_val,2))
-        print RegTemplate.safe_substitute(
-                                          bits=str(key), 
-                                          reg_name=desc[0], 
-                                          bit_value=bit_val, 
-                                          hex_value=str(hex(int(bit_val,2))), 
-                                          dec_value=str(int(bit_val,2)), 
-                                          ascii_value=achar)
+
+        print '%-5s %s: %s %s %s %s' % \
+            (key, desc[0].ljust(30), 
+             bit_val.rjust(32), 
+             hex(int(bit_val,2)).rjust(8), 
+             str(int(bit_val,2)).rjust(10), 
+             achar.rjust(2))
+        # Add optional description
         if len(desc) > 1:
             print '\t' + desc[1].strip()
     print
@@ -123,13 +124,14 @@ def main(argv):
     # Read file to list
     memory = [line.strip() for line in open(inputFile) if line.startswith('0x')]
     
-    # Go through the registers
+    # Go through the registers in sort order
     if sortKey == None:
         sorted_list = sorted(regsDef.iteritems())
     else:
         sorted_list = sorted(regsDef.iteritems(), key=lambda x: x[1][sortKey])
     
     for key, reg in sorted_list:
+        # Trick here is that if no search string has been given it equates to '' which matches every register
         if 'Offset' in reg and key.find(register) != -1:
         # Offset is in bytes and each line contains four bytes:
             line = (int(reg['Offset'])-int(base, 16)) / dataWidth

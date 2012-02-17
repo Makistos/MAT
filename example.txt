@@ -1,108 +1,108 @@
-SD_RX_EN_CFG[0]: RX Enable Register (Link 0) (0x00000001)
-0		ENRX 		:	1	0x1	1	
+SD_RX_EN_CFG[0]               : RX Enable Register (Link 0)                        (0x00000001)
+0     ENRX                          :                                1      0x1          1   
 	0 = Disabled, 1 = Enabled
 
-SD_RX_R2_CFG[0]: RX Configuration Register 2 (Link 0) (0x00018844)
-15-16		RXLOOPBACK 		:	11	0x3	3	
+SD_RX_R2_CFG[0]               : RX Configuration Register 2 (Link 0)               (0x00018844)
+15-16 RXLOOPBACK                    :                               11      0x3          3   
 	00 = Disabled, 11 = Enabled
 
-SD_TX_EN_CFG[0]: TX Enable Register (Link 0) (0x00000001)
-0		ENTX 		:	1	0x1	1	
+SD_TX_EN_CFG[0]               : TX Enable Register (Link 0)                        (0x00000001)
+0     ENTX                          :                                1      0x1          1   
 	0 = Disabled, 1 = Enabled
 
-SD_TX_R1_CFG[0]: TX Configuration Register 1 (Link 0) (0x00000069)
-3		MSYNC 		:	1	0x1	1	
+SD_TX_R1_CFG[0]               : TX Configuration Register 1 (Link 0)               (0x00000069)
+3     MSYNC                         :                                1      0x1          1   
 	Synchronization master, 0 = Disable, 1 = Enable
-0-1		TXRATE 		:	01	0x1	1	
+0-1   TXRATE                        :                               01      0x1          1   
 	01 = 8x (only for Tx SerDes)
-5-6		TXLOOPBACK 		:	11	0x3	3	
+5-6   TXLOOPBACK                    :                               11      0x3          3   
 	00 = Disabled, 11 = Enabled
 
-AD_ISCH_CFG: AD Scheduler Ingress Configuration Register (0x00010000)
-0		Fail Mode 		:	0	0x0	0	
+AD_ISCH_CFG                   : AD Scheduler Ingress Configuration Register        (0x00010000)
+0     Fail Mode                     :                                0      0x0          0   
 	0 = Drop failed packets, 1 = Mark failed packets
-16		Ingress Scheduler Priority 		:	1	0x1	1	
+16    Ingress Scheduler Priority    :                                1      0x1          1   
 	0 = DirectIO, 1 = Packet requests
 
-AD_ISCH_GLOBAL_EN_STS: AD Scheduler Ingress Global Enable Status Register (0x00000001)
-0		AD Enable Bit 		:	1	0x1	1	
+AD_ISCH_GLOBAL_EN_STS         : AD Scheduler Ingress Global Enable Status Register (0x00000001)
+0     AD Enable Bit                 :                                1      0x1          1   
 	1 = AD Scheduler ON, 0 = AD Scheduler OFF
 
-AD_ISCH_EOP_CNT: AD Ingress Scheduler EOP Counter Register (0x000521D8)
-0-23		EOPs sent to PKTDMA Controller		:	000001010010000111011000	0x521d8	336344	
+AD_ISCH_EOP_CNT               : AD Ingress Scheduler EOP Counter Register          (0x000521D8)
+0-23  EOPs sent to PKTDMA Controller:         000001010010000111011000  0x521d8     336344   
 
-AD_ESCH_CFG: AD Scheduler Egress Configuration Register (0x00002000)
-0-1		Queue Manager number sent to PKTDMA for Egress Transactions		:	00	0x0	0	
-4-15		Base Egress Queue Number		:	001000000000	0x200	512	
+AD_ESCH_CFG                   : AD Scheduler Egress Configuration Register         (0x00002000)
+0-1   Queue Manager number sent to PKTDMA for Egress Transactions:                               00      0x0          0   
+4-15  Base Egress Queue Number      :                     001000000000    0x200        512   
 
-AD_ESCH_GLOBAL_EN_STS: AD Scheduler Egress Global Enable Status Register (0x00000001)
-0		AD Scheduler Egress Enable Bit 		:	1	0x1	1	
+AD_ESCH_GLOBAL_EN_STS         : AD Scheduler Egress Global Enable Status Register  (0x00000001)
+0     AD Scheduler Egress Enable Bit :                                1      0x1          1   
 	1 = AD Egress Scheduler ON, 0 = AD Egress Scheduler OFF
 
-DB_IDB_GLOBAL_EN_STS: IDB Global Enable Status Register (0x00000000)
-0		Ingress Enable Bit 		:	0	0x0	0	
+DB_IDB_GLOBAL_EN_STS          : IDB Global Enable Status Register                  (0x00000000)
+0     Ingress Enable Bit            :                                0      0x0          0   
 	1 = DB_ON, 0 = DB_OFF
 
-DB_IDB_CH_EN[0]: Ingress Data Buffer Channel Enable Register (0x00000001)
-0-31		Channels 0-31		:	00000000000000000000000000000001	0x1	1	
+DB_IDB_CH_EN[0]               : Ingress Data Buffer Channel Enable Register        (0x00000001)
+0-31  Channels 0-31                 : 00000000000000000000000000000001      0x1          1   
 
-DB_IDB_CH_EN[1]: Ingress Data Buffer Channel Enable Register (0x00000000)
-0-31		Channels 32-63		:	00000000000000000000000000000000	0x0	0	
+DB_IDB_CH_EN[1]               : Ingress Data Buffer Channel Enable Register        (0x00000000)
+0-31  Channels 32-63                : 00000000000000000000000000000000      0x0          0   
 
-DB_IDB_CH_EN[2]: Ingress Data Buffer Channel Enable Register (0x00000000)
-0-31		Channels 64-95		:	00000000000000000000000000000000	0x0	0	
+DB_IDB_CH_EN[2]               : Ingress Data Buffer Channel Enable Register        (0x00000000)
+0-31  Channels 64-95                : 00000000000000000000000000000000      0x0          0   
 
-DB_IDB_CH_EN[3]: Ingress Data Buffer Channel Enable Register (0x00000000)
-0-31		Channels 96-127		:	00000000000000000000000000000000	0x0	0	
+DB_IDB_CH_EN[3]               : Ingress Data Buffer Channel Enable Register        (0x00000000)
+0-31  Channels 96-127               : 00000000000000000000000000000000      0x0          0   
 
-DB_EDB_GLOBAL_EN_STS: EDB Global Enable Status Register (0x00000001)
-0		Egress Enable Bit 		:	1	0x1	1	
+DB_EDB_GLOBAL_EN_STS          : EDB Global Enable Status Register                  (0x00000001)
+0     Egress Enable Bit             :                                1      0x1          1   
 	1 = DB_ON, 0 = DB_OFF
 
-DB_EDB_CH_EN[0]: Egress Data Buffer Channel Enable Register (0x00000001)
-0-31		Channels 0-31		:	00000000000000000000000000000001	0x1	1	
+DB_EDB_CH_EN[0]               : Egress Data Buffer Channel Enable Register         (0x00000001)
+0-31  Channels 0-31                 : 00000000000000000000000000000001      0x1          1   
 
-DB_EDB_CH_EN[1]: Egress Data Buffer Channel Enable Register (0x00000000)
-0-31		Channels 32-63		:	00000000000000000000000000000000	0x0	0	
+DB_EDB_CH_EN[1]               : Egress Data Buffer Channel Enable Register         (0x00000000)
+0-31  Channels 32-63                : 00000000000000000000000000000000      0x0          0   
 
-DB_EDB_CH_EN[2]: Egress Data Buffer Channel Enable Register (0x00000000)
-0-31		Channels 64-95		:	00000000000000000000000000000000	0x0	0	
+DB_EDB_CH_EN[2]               : Egress Data Buffer Channel Enable Register         (0x00000000)
+0-31  Channels 64-95                : 00000000000000000000000000000000      0x0          0   
 
-DB_EDB_CH_EN[3]: Egress Data Buffer Channel Enable Register (0x00000000)
-0-31		Channels 96-127		:	00000000000000000000000000000000	0x0	0	
+DB_EDB_CH_EN[3]               : Egress Data Buffer Channel Enable Register         (0x00000000)
+0-31  Channels 96-127               : 00000000000000000000000000000000      0x0          0   
 
-DB_EDB_EOP_CNT: Egress DB EOP Counter Register (0x00000000)
-0-23		Count of EOPs Received from PKTDMA		:	000000000000000000000000	0x0	0	
+DB_EDB_EOP_CNT                : Egress DB EOP Counter Register                     (0x00000000)
+0-23  Count of EOPs Received from PKTDMA:         000000000000000000000000      0x0          0   
 
-TM_LK_CFG[0]: TM Configuration Register (Link 0) (0x00000081)
-2		OBSAI/CPRI bit 		:	0	0x0	0	
+TM_LK_CFG[0]                  : TM Configuration Register (Link 0)                 (0x00000081)
+2     OBSAI/CPRI bit                :                                0      0x0          0   
 	0 = CPRI, 1 = OBSAI
-7		TM Enable Link 		:	1	0x1	1	
+7     TM Enable Link                :                                1      0x1          1   
 	0 = Disabled, 1 = Enabled
-0-1		Link Rate 		:	01	0x1	1	
+0-1   Link Rate                     :                               01      0x1          1   
 	0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
 
-RM_LK_CFG0[0]: RM Link Configuration Register 0 (Link 0) (0x00000006)
-0		Short frame mode 		:	0	0x0	0	
+RM_LK_CFG0[0]                 : RM Link Configuration Register 0 (Link 0)          (0x00000006)
+0     Short frame mode              :                                0      0x0          0   
 	0 = CPRI, 1 = OBSAI
-1		RM Enable Link 		:	1	0x1	1	
+1     RM Enable Link                :                                1      0x1          1   
 	0 = Disabled, 1 = Enabled
-2-3		Link Rate 		:	01	0x1	1	
+2-3   Link Rate                     :                               01      0x1          1   
 	0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
 
-CI_LK_CFG[0]: CI Link Configuration Register (Link 0) (0x00000011)
-2		OBSAI/CPRI bit 		:	0	0x0	0	
+CI_LK_CFG[0]                  : CI Link Configuration Register (Link 0)            (0x00000011)
+2     OBSAI/CPRI bit                :                                0      0x0          0   
 	0 = CPRI, 1 = OBSAI
-0-1		Link Rate 		:	01	0x1	1	
+0-1   Link Rate                     :                               01      0x1          1   
 	0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
-3-4		Sample Width 		:	10	0x2	2	
+3-4   Sample Width                  :                               10      0x2          2   
 	0 = 7 bits, 1 = 8 bits, 2 = 15 bits, 3 = 16 bits
 
-CO_LK_CFG[0]: CO Link Configuration Register (Link 0) (0x00000011)
-2		OBSAI/CPRI bit 		:	0	0x0	0	
+CO_LK_CFG[0]                  : CO Link Configuration Register (Link 0)            (0x00000011)
+2     OBSAI/CPRI bit                :                                0      0x0          0   
 	0 = CPRI, 1 = OBSAI
-0-1		Link Rate 		:	01	0x1	1	
+0-1   Link Rate                     :                               01      0x1          1   
 	0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
-3-4		Sample Width 		:	10	0x2	2	
+3-4   Sample Width                  :                               10      0x2          2   
 	0 = 7 bits, 1 = 8 bits, 2 = 15 bits, 3 = 16 bits
 

@@ -20,4 +20,4 @@ You only need to describe the bits that you are interested in in the definition 
 
 Very handy for complex peripherals and large memory sections.
 
-
+The value of each bit range is shown in bit, hex and integer plus if the value is exactly 8 bits, also the corresponding ASCII character.
