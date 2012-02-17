@@ -7,7 +7,7 @@ The description file is written in YAML and the example (default.map) should be 
 
 There is an example memory dump and output created using default.map. It was created by running 
 
-python src/main.py -i example.dat > example.txt
+python src/mat.py -i example.dat > example.txt
 
 For other parameters, run the script with the -h option.
 

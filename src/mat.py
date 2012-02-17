@@ -37,7 +37,7 @@ def __usage():
     exit()
 
 def __testBit(val, bit):
-    ''' Checks whether bit is on or off in val and return "0" or "1" '''
+    ''' Checks whether bit is on or off in val and returns "0" or "1" '''
     mask = 1 << int(bit)
     if (int(val, 16) & mask == 0):
         return "0"
@@ -48,10 +48,11 @@ def __bitRange(val, bits):
     ''' Returns a string containing the range of bits in val. '''
     retval = ''
     if len(bits) == 1:
+        # Only one bit defined
         return str(__testBit(val, bits[0]))
     else:
-        for bit in reversed(range(int(bits[0]), int(bits[1])+1)):
-            retval = retval + str(__testBit(val, bit))
+        # A range of bits
+        retval = ''.join(map(lambda x: __testBit(val, x), reversed(range(int(bits[0]), int(bits[1])+1))))
         # Could also leave reversed() out above and revese the result with retval[::-1], but this is more logical.
         return retval
     
@@ -62,20 +63,19 @@ def __printReg(regName, regDef, memory):
     print "%s: %s (%s)" % (regName, regDef['Name'], memory)
 
     for key, bit in sorted(bits.iteritems()):
+        achar = ''
         bit_range = str(key).split('-', 2)
         bit_val = __bitRange(memory, bit_range)
         desc = bit.split('//')
         if len(bit_val) == 4:
             # If length of field is exactly 2 bytes, print the ascii value as well
             achar = chr(int(bit_val,2))
-        else:
-            achar = ''
         print RegTemplate.safe_substitute(
                                           bits=str(key), 
                                           reg_name=desc[0], 
                                           bit_value=bit_val, 
-                                          hex_value=str(hex(int(bit_val))), 
-                                          dec_value=str(int(bit_val)), 
+                                          hex_value=str(hex(int(bit_val,2))), 
+                                          dec_value=str(int(bit_val,2)), 
                                           ascii_value=achar)
         if len(desc) > 1:
             print '\t' + desc[1].strip()
@@ -108,7 +108,7 @@ def main(argv):
             register = arg
         if opt in ('-s', '--sort'):
             if arg == 'key':
-                sortKey = ''
+                sortKey = None
             else:
                 sortKey = arg
         if opt in ('-w', '--width'):
@@ -124,7 +124,7 @@ def main(argv):
     memory = [line.strip() for line in open(inputFile) if line.startswith('0x')]
     
     # Go through the registers
-    if sortKey == '':
+    if sortKey == None:
         sorted_list = sorted(regsDef.iteritems())
     else:
         sorted_list = sorted(regsDef.iteritems(), key=lambda x: x[1][sortKey])
