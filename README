@@ -1,0 +1,23 @@
+MAT - Memory Analysis Tool
+--------------------------
+
+This simple script takes as input a memory dump and a description file describing that memory section and produces an output describing the contents.
+
+The description file is written in YAML and the example (default.map) should be self-explanatory. This includes some registers from a processor peripheral.
+
+There is an example memory dump and output created using default.map. It was created by running 
+
+python src/main.py -i example.dat > example.txt
+
+For other parameters, run the script with the -h option.
+
+You only need to describe the bits that you are interested in in the definition file. The worflow I use is:
+- I run the software to just before something interesting happens to the memory section.
+- I dump the memory region to a file.
+- I run the code that causes the changes.
+- I dump the memory region to another file.
+- Then I run the script on the two files and use Beyond Compare to see what was changed.
+
+Very handy for complex peripherals and large memory sections.
+
+

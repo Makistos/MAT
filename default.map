@@ -1,22 +1,4 @@
 ---
-aif2_pid:
-  Name: aif2_pid
-  Offset: 0x0
-  Description:
-  Bits: 
-    8-10: |
-      Major revision X code // 
-          Should be 1
-    6-7: Custom version code
-    0-5: Minor revision Y code
-
-aif2_scratch:
-  Name: aif2_scratch
-  Offset: 0x4
-  Description:
-  Bits:
-    0-31: scratch
-
 SD_RX_EN_CFG[0]:
   Name: RX Enable Register (Link 0)
   Offset: 0x8000
@@ -39,72 +21,138 @@ SD_TX_R1_CFG[0]:
   Name: TX Configuration Register 1 (Link 0)
   Offset: 0x8014
   Bits:
-    15-16: TXLOOPBACK // 00 = Disabled, 11 = Enabled
-
-SD_RX_EN_CFG[1]:
-  Name: RX Enable Register (Link 1)
-  Offset: 0x8800
-  Bits:
-    0: ENRX // 0 = Disabled, 1 = Enabled
-
-SD_TX_EN_CFG[1]:
-  Name: TX Enable Register (Link 1)
-  Offset: 0x8810
-  Bits:
-    0: ENTX // 0 = Disabled, 1 = Enabled
-
-SD_RX_EN_CFG[2]:
-  Name: RX Enable Register (Link 2)
-  Offset: 0x9000
-  Bits:
-    0: ENRX // 0 = Disabled, 1 = Enabled
-
-SD_TX_EN_CFG[2]:
-  Name: TX Enable Register (Link 2)
-  Offset: 0x9010
-  Bits:
-    0: ENTX // 0 = Disabled, 1 = Enabled
-
-SD_RX_EN_CFG[3]:
-  Name: RX Enable Register (Link 3)
-  Offset: 0x9800
-  Bits:
-    0: ENRX // 0 = Disabled, 1 = Enabled
-
-SD_TX_EN_CFG[3]:
-  Name: TX Enable Register (Link 3)
-  Offset: 0x9810
-  Bits:
-    0: ENTX // 0 = Disabled, 1 = Enabled
-
-SD_RX_EN_CFG[4]:
-  Name: RX Enable Register (Link 4)
-  Offset: 0xA000
-  Bits:
-    0: ENRX // 0 = Disabled, 1 = Enabled
-
-SD_TX_EN_CFG[4]:
-  Name: TX Enable Register (Link 4)
-  Offset: 0xA010
-  Bits:
-    0: ENTX // 0 = Disabled, 1 = Enabled
-
-SD_RX_EN_CFG[5]:
-  Name: RX Enable Register (Link 5)
-  Offset: 0xA800
-  Bits:
-    0: ENRX // 0 = Disabled, 1 = Enabled
-
-SD_TX_EN_CFG[5]:
-  Name: TX Enable Register (Link 5)
-  Offset: 0xA810
-  Bits:
-    0: ENTX // 0 = Disabled, 1 = Enabled
+    5-6: TXLOOPBACK // 00 = Disabled, 11 = Enabled
+    3: MSYNC // Synchronization master, 0 = Disable, 1 = Enable
+    0-1: TXRATE // 01 = 8x (only for Tx SerDes)
 
 RM_LK_CFG0[0]:
   Name: RM Link Configuration Register 0 (Link 0)
   Offset: 0x50000
   Bits:
     2-3: Link Rate // 0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
-    1: Enable RM Link // 0 = Disabled, 1 = Enabled
+    1: RM Enable Link // 0 = Disabled, 1 = Enabled
     0: Short frame mode // 0 = CPRI, 1 = OBSAI
+
+TM_LK_CFG[0]:
+  Name: TM Configuration Register (Link 0)
+  Offset: 0x4C000
+  Bits:
+    7: TM Enable Link // 0 = Disabled, 1 = Enabled
+    2: OBSAI/CPRI bit // 0 = CPRI, 1 = OBSAI
+    0-1: Link Rate // 0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
+
+CI_LK_CFG[0]:
+  Name: CI Link Configuration Register (Link 0)
+  Offset: 0x58000
+  Bits:
+    3-4: Sample Width // 0 = 7 bits, 1 = 8 bits, 2 = 15 bits, 3 = 16 bits
+    2: OBSAI/CPRI bit // 0 = CPRI, 1 = OBSAI
+    0-1: Link Rate // 0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
+
+CO_LK_CFG[0]:
+  Name: CO Link Configuration Register (Link 0)
+  Offset: 0x5C000
+  Bits:
+    3-4: Sample Width // 0 = 7 bits, 1 = 8 bits, 2 = 15 bits, 3 = 16 bits
+    2: OBSAI/CPRI bit // 0 = CPRI, 1 = OBSAI
+    0-1: Link Rate // 0 = 8x, 1 = 4x, 2 = 2x, 3 = 1x
+
+DB_IDB_GLOBAL_EN_STS:
+  Name: IDB Global Enable Status Register
+  Offset: 0x10008
+  Bits:
+    0: Ingress Enable Bit // 1 = DB_ON, 0 = DB_OFF
+
+DB_IDB_CH_EN[0]:
+  Name: Ingress Data Buffer Channel Enable Register
+  Offset: 0x10010
+  Bits:
+    0-31: Channels 0-31
+
+DB_IDB_CH_EN[1]:
+  Name: Ingress Data Buffer Channel Enable Register
+  Offset: 0x10014
+  Bits:
+    0-31: Channels 32-63
+
+DB_IDB_CH_EN[2]:
+  Name: Ingress Data Buffer Channel Enable Register
+  Offset: 0x10018
+  Bits:
+    0-31: Channels 64-95
+
+DB_IDB_CH_EN[3]:
+  Name: Ingress Data Buffer Channel Enable Register
+  Offset: 0x1001C
+  Bits:
+    0-31: Channels 96-127
+
+DB_EDB_GLOBAL_EN_STS:
+  Name: EDB Global Enable Status Register
+  Offset: 0x1100C
+  Bits:
+    0: Egress Enable Bit // 1 = DB_ON, 0 = DB_OFF
+
+DB_EDB_CH_EN[0]:
+  Name: Egress Data Buffer Channel Enable Register
+  Offset: 0x11010
+  Bits:
+    0-31: Channels 0-31
+
+DB_EDB_CH_EN[1]:
+  Name: Egress Data Buffer Channel Enable Register
+  Offset: 0x11014
+  Bits:
+    0-31: Channels 32-63
+
+DB_EDB_CH_EN[2]:
+  Name: Egress Data Buffer Channel Enable Register
+  Offset: 0x11018
+  Bits:
+    0-31: Channels 64-95
+
+DB_EDB_CH_EN[3]:
+  Name: Egress Data Buffer Channel Enable Register
+  Offset: 0x1101C
+  Bits:
+    0-31: Channels 96-127
+
+DB_EDB_EOP_CNT:
+  Name: Egress DB EOP Counter Register
+  Offset: 0x1112C
+  Bits:
+    0-23: Count of EOPs Received from PKTDMA
+
+AD_ISCH_CFG:
+  Name: AD Scheduler Ingress Configuration Register
+  Offset: 0xE000
+  Bits:
+    16: Ingress Scheduler Priority // 0 = DirectIO, 1 = Packet requests
+    0: Fail Mode // 0 = Drop failed packets, 1 = Mark failed packets
+
+AD_ISCH_GLOBAL_EN_STS:
+  Name: AD Scheduler Ingress Global Enable Status Register
+  Offset: 0xE00C
+  Bits:
+    0: AD Enable Bit // 1 = AD Scheduler ON, 0 = AD Scheduler OFF
+
+AD_ISCH_EOP_CNT:
+  Name: AD Ingress Scheduler EOP Counter Register
+  Offset: 0xE010
+  Bits:
+    0-23: EOPs sent to PKTDMA Controller
+
+AD_ESCH_CFG:
+  Name: AD Scheduler Egress Configuration Register
+  Offset: 0xE100
+  Bits:
+    4-15: Base Egress Queue Number
+    0-1: Queue Manager number sent to PKTDMA for Egress Transactions
+
+AD_ESCH_GLOBAL_EN_STS:
+  Name: AD Scheduler Egress Global Enable Status Register
+  Offset: 0xE10C
+  Bits:
+    0: AD Scheduler Egress Enable Bit // 1 = AD Egress Scheduler ON, 0 = AD Egress Scheduler OFF
+
+
